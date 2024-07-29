@@ -1,0 +1,8 @@
+.disabled-row {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+  
+  .disabled-row .mat-slide-toggle {
+    pointer-events: auto;
+  }

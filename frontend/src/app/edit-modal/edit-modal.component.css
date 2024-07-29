@@ -1,0 +1,20 @@
+.form-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .tags-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .tag-group {
+    display: flex;
+    align-items: center;
+  }
+  
+  .tag-group mat-form-field {
+    flex: 1;
+    margin-right: 8px;
+  }
+  

@@ -1,0 +1,25 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th *ngFor="let header of headers">{{header}}</th>
+      <th *ngIf="showActiveToggle">Active</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of data; let i = index" [class.disabled-row]="item.deleted">
+      <td *ngFor="let header of headers">{{item[header]}}</td>
+      <td *ngIf="showActiveToggle">
+        <input 
+          type="checkbox"
+          [checked]="!item.deleted"
+          (change)="handleToggleActive(item._id, $event)"
+        >
+      </td>
+      <td>
+        <button (click)="onEdit.emit(item)" [disabled]="item.deleted">Edit</button>
+        <button (click)="onDelete.emit(item._id)" [disabled]="item.deleted">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

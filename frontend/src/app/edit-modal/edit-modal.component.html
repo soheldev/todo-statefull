@@ -1,0 +1,60 @@
+<div class="modal" tabindex="-1" role="dialog" [ngClass]="{'show': true}" [ngStyle]="{'display': 'block'}">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit {{ isExpense ? 'Expense' : 'Type' }}</h5>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="editForm">
+          <div class="form-group">
+            <label for="type">Type</label>
+            <input *ngIf="!isExpense" type="text" class="form-control" formControlName="type">
+            <select *ngIf="isExpense" class="form-control" formControlName="type">
+              <option *ngFor="let type of taskList" [value]="type">{{type}}</option>
+            </select>
+          </div>
+
+          <ng-container *ngIf="isExpense">
+            <div class="form-group">
+              <label for="title">Title</label>
+              <input type="text" class="form-control" formControlName="title" placeholder="Title">
+            </div>
+            <div class="form-group">
+              <label for="description">Description</label>
+              <textarea class="form-control" formControlName="description" placeholder="Description"></textarea>
+            </div>
+            <div class="form-group">
+              <mat-form-field>
+                <mat-label>Date</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="date" placeholder="Date">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            </div>
+            <div class="form-group">
+              <label for="amount">Amount</label>
+              <input type="number" class="form-control" formControlName="amount" placeholder="Amount">
+            </div>
+            <div class="form-group">
+              <label>Tags</label>
+              <div formArrayName="tags">
+                <div *ngFor="let tag of tags.controls; let i = index" [formGroupName]="i" class="input-group mb-2">
+                  <input type="text" class="form-control" formControlName="key" placeholder="Tag Key">
+                  <input type="text" class="form-control" formControlName="value" placeholder="Tag Value">
+                  <div class="input-group-append">
+                    <button type="button" class="btn btn-danger" (click)="removeTag(i)">-</button>
+                  </div>
+                </div>
+              </div>
+              <button type="button" class="btn btn-primary" (click)="addTag()">+</button>
+            </div>
+          </ng-container>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="save()">Save</button>
+        <button type="button" class="btn btn-secondary" (click)="close()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

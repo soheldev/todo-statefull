@@ -1,0 +1,20 @@
+<div class="container-fluid">
+    <div class="row py-3">
+        <div class="col-6 d-flex align-items-center">
+            <button routerLink="/expense-type-master" class="btn btn-primary mr-2">Type Master</button>
+            <button routerLink="/expenses" class="btn btn-secondary">Expense Component</button>
+        </div>
+        <div class="col-6 text-right">
+            <span class="mr-3">Hello, <span class="font-weight-bold">{{ username }}</span></span>
+            <button class="btn btn-danger" (click)="logout()">Logout</button>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-4">
+    <app-monthly-expense-summary></app-monthly-expense-summary>
+</div>
+
+<div class="container mt-4">
+    <router-outlet></router-outlet>
+</div>

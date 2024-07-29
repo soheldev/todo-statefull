@@ -1,0 +1,14 @@
+.bg-danger {
+    background-color: red !important;
+  }
+  
+  .text-white {
+    color: white !important;
+  }
+  
+  /* Or your custom class */
+  .deleted-row {
+    background-color: red;
+    color: white;
+  }
+  
